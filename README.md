@@ -1,4 +1,4 @@
-# Face-Detection
+# Face-Recognition
 
 ![alt text](https://raw.githubusercontent.com/bquangDinh/Face-Detection/master/output.jpg)
 
