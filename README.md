@@ -1,5 +1,9 @@
 # Face-Detection
 
+In this week, I haved built some python script using face_recognition library to recognize my friends. I put it here for anyone want to contribute this bullshit project :D.
+
+You can found the face_recognition library [here](https://github.com/ageitgey/face_recognition). By the way, thanks for someone had built this library. It's very powerful :D.
+
 ## Installation
 ### 1.Install virtual workspace
 Using these commands to install virtualenv workspace. The virtual workspace is the environment for dlib library.
@@ -62,6 +66,23 @@ There are two ways to do that and it's very simple
 
 If you want to use image to recognition. You can run face_recognition_image.py and it will build your encoding file and recognize your input image in one time. Here is some parameters of this file
 
+The second way to build your encoding file is using face_encodings.py file instead.
+
+```bash
+-dt/--dataset (required) : path to input face dataset
+-o/--output_encodings (required) : encodings file name for saving
+-de/--detection_method : Choose between 'cnn' or 'hog'. The default setting is cnn
+```
+Example:
+
+```bash
+python face_encodings.py --dataset="FaceData" --output_encodings="encodings.db" --detection_method="hog"
+```
+
+You will need this file if you want to work with video
+
+There are parameters of face_recognition_image.py file:
+
 ```bash
 -e/--encoding_dataset : Path to input dataset
 -i/--input_image (required) : The input image to recognize
@@ -85,21 +106,6 @@ python face_recognition_image.py --encoding_file="encoding.db" --input_image="in
 ```
 
 Notice the above example will detect faces in the image by cnn. That is the default setting.
-
-Second way to build your encoding file is using face_encodings.py file instead. Here is parameters of this file:
-
-```bash
--dt/--dataset (required) : path to input face dataset
--o/--output_encodings (required) : encodings file name for saving
--de/--detection_method : Choose between 'cnn' or 'hog'. The default setting is cnn
-```
-Example:
-
-```bash
-python face_encodings.py --dataset="FaceData" --output_encodings="encodings.db" --detection_method="hog"
-```
-
-You will need this file if you want to work with video
 
 ### Video
 
@@ -136,6 +142,31 @@ FONT_TYPE = cv2.FONT_HERSHEY_SIMPLEX
 FONT_SIZE = 0.75
 FONT_COLOR = (255,0,255)
 FONT_WEIGHT = 2
+```
+
+## Use for your program
+If you want to use recognized face data. You can reuse my code. Make sure you haved the encodings file and face_recognition_image.py in your project folder.
+
+Example: 
+
+```bash
+from face_recognition_image import processingFaceData,loadEncodings
+
+encoding_file = "encodings.db"
+
+known_encodings,known_names = loadEncodings(encoding_file)
+
+face_locations,names = processingFaceData(yourimage,known_encodings,names)
+
+# with once face location corresponding to the name of the face
+
+#example
+
+for face_location,name in zip(face_locations,names):
+ (top,right,bottom,left) = face_location
+ 
+ #Draw a rectangle with top right bottom and left coordinates
+
 ```
 
 In this program, it have not option to save output video because the output video can really bad quality. I don't know why but in this time I don't make it. This project just is a practice :D So try your best, change my code and you can make it :D
