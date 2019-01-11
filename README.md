@@ -171,5 +171,5 @@ for face_location,name in zip(face_locations,names):
 
 ```
 
-In this program, it have not option to save output video because the output video can really bad quality. I don't know why but in this time I don't make it. This project just is a practice :D So try your best, change my code and you can make it :D
+In this program, it have no option to save output video because the output video can really bad quality. I don't know why but in this time I don't make it. This project just is a practice :D So try your best, change my code and you can make it :D
 
