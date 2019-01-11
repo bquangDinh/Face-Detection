@@ -39,7 +39,7 @@ If something gone wrong while installing. You can open my setup.py file and look
 
 After that, so everthing done. Enjoy :D
 
-## Guide
+## Guideline
 
 First thing you need to do is building your faces database. 
 Your structure database should be like this:
