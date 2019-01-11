@@ -1,5 +1,7 @@
 # Face-Detection
 
+![alt text](https://raw.githubusercontent.com/bquangDinh/Face-Detection/master/output.jpg)
+
 In this week, I haved built some python script using face_recognition library to recognize my friends. I put it here for anyone want to contribute this bullshit project :D.
 
 You can found the face_recognition library [here](https://github.com/ageitgey/face_recognition). By the way, thanks for someone had built this library. It's very powerful :D.
