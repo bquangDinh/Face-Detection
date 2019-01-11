@@ -56,7 +56,7 @@ Your structure database should be like this:
   
  
 
-Next thing is build your encoding file which is extracted from your database. It's very necessary to do a lot of thing.
+Next thing is build your encoding file which is extracted from your database. It's very necessary to do a lot of things.
 
 There are two ways to do that and it's very simple
 
@@ -85,6 +85,21 @@ python face_recognition_image.py --encoding_file="encoding.db" --input_image="in
 ```
 
 Notice the above example will detect faces in the image by cnn. That is the default setting.
+
+Second way to build your encoding file is using face_encodings.py file instead. Here is parameters of this file:
+
+```bash
+-dt/--dataset (required) : path to input face dataset
+-o/--output_encodings (required) : encodings file name for saving
+-de/--detection_method : Choose between 'cnn' or 'hog'. The default setting is cnn
+```
+Example:
+
+```bash
+python face_encodings.py --dataset="FaceData" --output_encodings="encodings.db" --detection_method="hog"
+```
+
+You will need this file if you want to work with video
 
 ### Video
 
