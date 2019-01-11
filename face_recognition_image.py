@@ -49,8 +49,8 @@ def createEncodings():
 
 	return known_encodings,known_names
 
-def loadEncodings():
-	data = pickle.loads(open(args["encoding_file"],"rb").read())
+def loadEncodings(encodingFile):
+	data = pickle.loads(open(encodingFile,"rb").read())
 
 	return data["encodings"],data["names"]
 
@@ -137,7 +137,7 @@ def main():
 			writeEncodingDataToFile(known_encodings,known_names)
 
 	if(known_encodings and known_names):
-		img = loadImage()
+		img = loadImage(args["encoding_file"])
 		face_locations,names =  processingFaceData(img,known_encodings,known_names)
 		img = drawFaces(img,face_locations,names)
 		saveImage(img,False)
