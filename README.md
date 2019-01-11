@@ -1,5 +1,9 @@
 # Face-Detection
 
+In this week, I haved built some python script using face_recognition library to recognize my friends. I put it here for anyone want to contribute this bullshit project :D.
+
+You can found the face_recognition library [here](https://github.com/ageitgey/face_recognition). By the way, thanks for someone had built this library. It's very powerful :D.
+
 ## Installation
 ### 1.Install virtual workspace
 Using these commands to install virtualenv workspace. The virtual workspace is the environment for dlib library.
@@ -141,12 +145,12 @@ FONT_WEIGHT = 2
 ```
 
 ## Use for your program
-If you want to use recognized face data. You can reuse my code. Make sure you haved the encodings file.
+If you want to use recognized face data. You can reuse my code. Make sure you haved the encodings file and face_recognition_image.py in your project folder.
 
 Example: 
 
 ```bash
-from face_recognition_image processingFaceData,loadEncodings
+from face_recognition_image import processingFaceData,loadEncodings
 
 encoding_file = "encodings.db"
 
