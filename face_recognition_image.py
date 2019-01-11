@@ -125,7 +125,7 @@ def main():
 		known_encodings,known_names = createEncodings()	
 	else:
 		if(args["encoding_file"]):
-			known_encodings,known_names = loadEncodings()
+			known_encodings,known_names = loadEncodings(args["encoding_file"])
 		else:
 			print "Encoding Data is not set. You are missing some important parameter."
 			return
@@ -137,7 +137,7 @@ def main():
 			writeEncodingDataToFile(known_encodings,known_names)
 
 	if(known_encodings and known_names):
-		img = loadImage(args["encoding_file"])
+		img = loadImage()
 		face_locations,names =  processingFaceData(img,known_encodings,known_names)
 		img = drawFaces(img,face_locations,names)
 		saveImage(img,False)
