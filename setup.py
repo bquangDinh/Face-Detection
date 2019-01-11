@@ -21,7 +21,4 @@ def install_packages():
 
 	print "Ready to use face_recognition_testing.py. Use the command 'python face_recognition_testing.py --help' to see the parameters"
 
-	
-
-
 install_packages()
