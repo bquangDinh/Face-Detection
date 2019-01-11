@@ -74,8 +74,11 @@ def saveImage(img,inverseColor=True):
 
 	cv2.imwrite(args["output_image"],img)
 
-def processingFaceData(known_encodings,known_names):
+def loadImage():
 	input_img = face_recognition.load_image_file(args["input_image"])
+	return input_img
+
+def processingFaceData(input_img,known_encodings,known_names):
 	face_locations = face_recognition.face_locations(input_img,model=args["detection_method"])
 
 	encodings = face_recognition.face_encodings(input_img,face_locations)
@@ -102,6 +105,9 @@ def processingFaceData(known_encodings,known_names):
 
 		names.append(name)
 
+	return face_locations,names
+
+def drawFaces(input_img,face_locations,names):
 	for ((top,right,bottom,left),name) in zip(face_locations,names):
 		cv2.rectangle(input_img,(left,top),(right,bottom),(0,255,0),2)
 		y = top - 15 if top - 15 > 15 else top + 15
@@ -111,7 +117,7 @@ def processingFaceData(known_encodings,known_names):
 	cv2.imshow('faces',input_img)
 	cv2.waitKey(0)
 
-	saveImage(input_img,False)
+	return input_img
 
 
 def main():
@@ -131,7 +137,11 @@ def main():
 			writeEncodingDataToFile(known_encodings,known_names)
 
 	if(known_encodings and known_names):
-		processingFaceData(known_encodings,known_names)
+		img = loadImage()
+		face_locations,names =  processingFaceData(img,known_encodings,known_names)
+		img = drawFaces(img,face_locations,names)
+		saveImage(img,False)
+
 	else:
 		print "Encoding data is not found. Something gone wrong !"
 
